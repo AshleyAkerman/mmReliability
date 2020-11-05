@@ -1,0 +1,24 @@
+Package: mmReliability
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Ashley",
+           family = "Akerman",
+           role = c("aut", "cre"),
+           email = "ashleypaulakerman@gmail.com",
+           comment = c(ORCID = "Y0000-0001-9194-2148"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    magrittr,
+    dplyr,
+    effsize,
+    ggplot2,
+    gridExtra,
+    psych,
+    pwr, 
+    tidyr

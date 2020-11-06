@@ -32,11 +32,23 @@ reliability_extraction_function <- function(n, long, wide){
   # For each variable number...
   for (variable in 1: length(variable_placement)) {
 
-    # Adjusting data for independent analysis of time points
-    # The variable + 1 is because the Subject column needs to be accounted for
-    # The second part of the cbind takes the columns of the respective data frame, starting from the column with the first variable, and then each column corresponding to that variable
-    df <- cbind(wide$Subject, wide[, c(seq(variable + 1, (length(long) - (ifelse(variable + 1 == max(variable_placement), 1, 2))) * 3,
-                                           by = length(long) - 2))])
+    # If the length of the variables is only 1, then do not need to subset the dataframe
+    if(n == 1) {
+
+      df <- wide
+
+    }
+
+    # But if it is larger than 1 variable, need to adjust the dataframe
+    if(n > 1) {
+
+      # Adjusting data for independent analysis of time points
+      # The variable + 1 is because the Subject column needs to be accounted for
+      # The second part of the cbind takes the columns of the respective data frame, starting from the column with the first variable, and then each column corresponding to that variable
+      df <- cbind(wide$Subject, wide[, c(seq(variable + 1, (length(long) - (ifelse(variable + 1 == max(variable_placement), 1, 2))) * 3,
+                                             by = length(long) - 2))])
+
+    }
 
     # Add just the data to a df for ICC calculation
     icc_data <- df[,-1]
